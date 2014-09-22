@@ -1,0 +1,133 @@
+package chaos;
+import "gtfs-realtime.proto";
+
+message Disruption{
+    // must match with the id in the FeedEntity for deletion
+    required string id = 1;
+
+    // it's the title of the disruption as shown in the backoffice
+    optional string reference = 3;
+
+    // the publication period specify when an information can be displayed to
+    // the customer, if a request is made before or after this period the
+    // disruption must not be shown
+    optional transit_realtime.TimeRange publication_period = 4;
+
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 6;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 7;
+
+    optional Cause cause = 8;
+
+    repeated Impact impacts = 9;
+
+    // the place where the disruption happen, the impacts can be in anothers places
+    repeated transit_realtime.EntitySelector localization = 10;
+
+    repeated Tag tags = 11;
+
+    optional string note = 12;
+}
+
+message Cause{
+    required string id = 1;
+    optional string wording = 2;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 3;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 4;
+}
+
+message Impact{
+    required string id = 1;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 2;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 3;
+
+    // the application period define when the impact happen
+    repeated transit_realtime.TimeRange application_periods = 4;
+
+    optional Severity severity = 5;
+
+    repeated PtObject informed_entities = 6;
+
+    repeated Message messages = 7;
+}
+
+
+message PtObject{
+      enum Type {
+        network = 1;
+        stop_area = 2;
+        line = 3;
+        line_section = 4;
+        route = 5;
+        unkown_type = 6;
+      }
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 1;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 2;
+    required Type pt_object_type = 3;
+    required string uri = 4;
+}
+
+message Severity{
+    required string id = 1;
+    optional string wording = 2;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 3;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 4;
+
+    optional string color = 5;
+
+    optional int32 priority = 6;
+
+    optional transit_realtime.Alert.Effect effect = 7;
+}
+
+message Tag{
+    required string id = 1;
+    required string name = 2;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 3;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 4;
+}
+
+message Message{
+    required string text = 1;
+    // Channel where the message is active, it can be something like twitter, SMS, web, etc...
+    required Channel channel = 2;
+
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 3;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 4;
+}
+
+// Represent a channel of diffusion, something like SMS, twitter, etc...
+message Channel{
+    required string id = 1;
+    //for example: "twitter" or "short text"
+    optional string name = 2;
+    //for example: "text/plain" or "text/html"
+    optional string content_type = 3;
+
+    // maximum number of character for this channel, mostly for information
+    // since diffusion system don't need to bother with that
+    // If missing, there is no limit!
+    optional uint32 max_size = 4;
+
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 5;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 6;
+}
+
+extend transit_realtime.FeedEntity{
+  optional Disruption disruption = 1000;
+}
