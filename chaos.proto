@@ -23,7 +23,7 @@ message Disruption{
     repeated Impact impacts = 9;
 
     // the place where the disruption happen, the impacts can be in anothers places
-    repeated transit_realtime.EntitySelector localization = 10;
+    repeated PtObject localization = 10;
 
     repeated Tag tags = 11;
 
