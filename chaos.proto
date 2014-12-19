@@ -22,12 +22,11 @@ message Disruption{
 
     repeated Impact impacts = 9;
 
-    // the place where the disruption happen, the impacts can be in anothers places
-    repeated transit_realtime.EntitySelector localization = 10;
-
     repeated Tag tags = 11;
 
     optional string note = 12;
+    // the place where the disruption happen, the impacts can be in anothers places
+    repeated PtObject localization = 13;
 }
 
 message Cause{
