@@ -34,6 +34,15 @@ message Wording {
     required string value = 2;
 }
 
+Message Category {
+    required string id = 1;
+    required string name = 2;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 created_at = 3;
+    //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
+    optional uint64 updated_at = 4;
+}
+
 message Cause{
     required string id = 1;
     optional string wording = 2;
@@ -42,6 +51,7 @@ message Cause{
     //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
     optional uint64 updated_at = 4;
     repeated Wording wordings = 5;
+    optional Category category = 6;
 }
 
 message Impact{
