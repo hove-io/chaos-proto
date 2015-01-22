@@ -41,7 +41,7 @@ message Cause{
     optional uint64 created_at = 3;
     //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
     optional uint64 updated_at = 4;
-    optional Wording wordings = 5;
+    repeated Wording wordings = 5;
 }
 
 message Impact{
