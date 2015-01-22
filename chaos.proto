@@ -34,7 +34,7 @@ message Wording {
     required string value = 2;
 }
 
-Message Category {
+message Category {
     required string id = 1;
     required string name = 2;
     //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
