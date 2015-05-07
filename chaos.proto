@@ -88,8 +88,8 @@ message PtObject{
         line = 3;
         line_section = 4;
         route = 5;
-        stop_point = 6;
-        unkown_type = 7;
+        unkown_type = 6;
+        stop_point = 7;
       }
     //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
     optional uint64 created_at = 1;
