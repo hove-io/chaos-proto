@@ -137,6 +137,17 @@ message Message{
 
 // Represent a channel of diffusion, something like SMS, twitter, etc...
 message Channel{
+      // Represent a type of diffusion for a channel like web, mobile, notification, sms, email..
+      enum Type {
+        web = 1;
+        sms = 2;
+        email = 3;
+        mobile = 4;
+        notification = 5;
+        twitter = 6;
+        facebook = 7;
+        unkown_type = 8;
+      }
     required string id = 1;
     //for example: "twitter" or "short text"
     optional string name = 2;
@@ -152,6 +163,8 @@ message Channel{
     optional uint64 created_at = 5;
     //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
     optional uint64 updated_at = 6;
+    //Channel types
+    repeated Type types = 7;
 }
 
 extend transit_realtime.FeedEntity{
