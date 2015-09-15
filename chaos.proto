@@ -71,7 +71,7 @@ message Impact{
     repeated Message messages = 7;
 
     // Send a message
-    optional bool push = 8;
+    optional bool send_notification = 8;
 }
 
 
