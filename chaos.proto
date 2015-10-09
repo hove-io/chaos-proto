@@ -27,6 +27,9 @@ message Disruption{
     optional string note = 12;
     // the place where the disruption happen, the impacts can be in anothers places
     repeated PtObject localization = 13;
+
+    // Provider of the disruption
+    optional string contributor = 14;
 }
 
 message Wording {
