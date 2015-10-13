@@ -176,7 +176,3 @@ message Channel{
 extend transit_realtime.FeedEntity{
   optional Disruption disruption = 1000;
 }
-
-extend transit_realtime.TripUpdate{
-    optional Message message = 1000;
-}
