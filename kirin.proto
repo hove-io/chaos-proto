@@ -6,3 +6,8 @@ import "chaos.proto";
 extend transit_realtime.TripUpdate{
     optional chaos.Message message = 1000;
 }
+
+extend transit_realtime.FeedEntity{
+    optional string contributor = 1001;
+}
+
