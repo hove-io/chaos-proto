@@ -1,6 +1,7 @@
 syntax = "proto2";
 package kirin;
 import "gtfs-realtime.proto";
+import "chaos.proto";
 
 
 extend transit_realtime.TripUpdate {
