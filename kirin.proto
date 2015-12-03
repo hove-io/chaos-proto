@@ -1,13 +1,15 @@
 package kirin;
 import "gtfs-realtime.proto";
-import "chaos.proto";
 
 
-extend transit_realtime.TripUpdate{
-    optional chaos.Message message = 1000;
+extend transit_realtime.TripUpdate {
+    optional string trip_message = 1000;
 }
 
-extend transit_realtime.TripDescriptor{
+extend transit_realtime.TripDescriptor {
     optional string contributor = 1000;
 }
 
+extend transit_realtime.TripUpdate.StopTimeUpdate {
+    optional string stoptime_message = 1000;
+}
