@@ -1,3 +1,4 @@
+syntax = "proto2";
 package kirin;
 import "gtfs-realtime.proto";
 
