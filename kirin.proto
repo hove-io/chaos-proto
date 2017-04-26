@@ -1,7 +1,6 @@
 syntax = "proto2";
 package kirin;
 import "gtfs-realtime.proto";
-import "chaos.proto";
 
 
 extend transit_realtime.TripUpdate {
@@ -14,4 +13,8 @@ extend transit_realtime.TripDescriptor {
 
 extend transit_realtime.TripUpdate.StopTimeUpdate {
     optional string stoptime_message = 1000;
+}
+
+extend transit_realtime.TripUpdate.StopTimeEvent {
+    optional transit_realtime.TripUpdate.StopTimeUpdate.ScheduleRelationship stop_time_event_relationship = 1000;
 }
