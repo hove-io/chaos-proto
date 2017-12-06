@@ -33,7 +33,7 @@ message Disruption{
     optional string contributor = 14;
 
     // properties attached to the disruption
-    repeated Property properties = 15;
+    repeated DisruptionProperty properties = 15;
 }
 
 message Wording {
@@ -184,7 +184,7 @@ message Channel{
 }
 
 // Property attached to a disruption
-message Property {
+message DisruptionProperty {
     // identification key of the property
     required string key = 1;
     // type of the property, example: "datasource"
