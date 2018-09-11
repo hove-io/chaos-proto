@@ -147,6 +147,9 @@ message Message{
     optional uint64 created_at = 3;
     //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
     optional uint64 updated_at = 4;
+    
+    // Meta
+    repeated Meta meta = 5;
 }
 
 // Represent a channel of diffusion, something like SMS, twitter, etc...
@@ -191,6 +194,14 @@ message DisruptionProperty {
     required string type = 2;
     // value of the property
     required string value = 3;
+}
+
+// Meta use for Message
+message Meta {
+    // identification key of the meta
+    required string key = 1;
+    // value of the meta
+    required string value = 2;
 }
 
 extend transit_realtime.FeedEntity{
