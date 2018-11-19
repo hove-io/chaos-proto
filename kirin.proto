@@ -5,11 +5,11 @@ import "gtfs-realtime.proto";
 
 extend transit_realtime.TripUpdate {
     optional string trip_message = 1000;
-    optional string company = 1001;
 }
 
 extend transit_realtime.TripDescriptor {
     optional string contributor = 1000;
+    optional string company = 1001;
 }
 
 extend transit_realtime.TripUpdate.StopTimeUpdate {
