@@ -9,6 +9,7 @@ extend transit_realtime.TripUpdate {
 
 extend transit_realtime.TripDescriptor {
     optional string contributor = 1000;
+    optional string company_id = 1001;
 }
 
 extend transit_realtime.TripUpdate.StopTimeUpdate {
