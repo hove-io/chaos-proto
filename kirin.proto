@@ -5,6 +5,7 @@ import "gtfs-realtime.proto";
 
 extend transit_realtime.TripUpdate {
     optional string trip_message = 1000;
+    optional transit_realtime.Alert.Effect effect = 1001;
 }
 
 extend transit_realtime.TripDescriptor {
