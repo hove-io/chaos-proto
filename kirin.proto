@@ -17,6 +17,16 @@ extend transit_realtime.TripUpdate.StopTimeUpdate {
     optional string stoptime_message = 1000;
 }
 
+enum StopTimeEventStatus {
+  SCHEDULED = 0;
+  SKIPPED = 1;
+  NO_DATA = 2;
+  ADDED = 3;
+  SKIPPED_FOR_DETOUR = 4;
+  ADDED_FOR_DETOUR = 5;
+}
+
 extend transit_realtime.TripUpdate.StopTimeEvent {
     optional transit_realtime.TripUpdate.StopTimeUpdate.ScheduleRelationship stop_time_event_relationship = 1000;
+    optional StopTimeEventStatus stop_time_event_status = 1001;
 }
