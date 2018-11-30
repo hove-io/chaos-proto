@@ -21,7 +21,7 @@ enum StopTimeEventStatus {
   SKIPPED = 1;
   NO_DATA = 2;
   ADDED = 3;
-  SKIP_FOR_DETOUR = 4;
+  SKIPPED_FOR_DETOUR = 4;
   ADDED_FOR_DETOUR = 5;
 }
 
