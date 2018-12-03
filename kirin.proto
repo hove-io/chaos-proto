@@ -19,10 +19,10 @@ extend transit_realtime.TripUpdate.StopTimeUpdate {
 
 enum StopTimeEventStatus {
   SCHEDULED = 0;
-  SKIPPED = 1;
+  DELETED = 1;
   NO_DATA = 2;
   ADDED = 3;
-  SKIPPED_FOR_DETOUR = 4;
+  DELETED_FOR_DETOUR = 4;
   ADDED_FOR_DETOUR = 5;
 }
 
