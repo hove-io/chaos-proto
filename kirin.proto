@@ -30,3 +30,7 @@ extend transit_realtime.TripUpdate.StopTimeEvent {
     optional transit_realtime.TripUpdate.StopTimeUpdate.ScheduleRelationship stop_time_event_relationship = 1000;
     optional StopTimeEventStatus stop_time_event_status = 1001;
 }
+
+extend transit_realtime.VehicleDescriptor {
+    optional string physical_mode_id = 1000;
+}
