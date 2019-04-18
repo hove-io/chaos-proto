@@ -33,4 +33,5 @@ extend transit_realtime.TripUpdate.StopTimeEvent {
 
 extend transit_realtime.VehicleDescriptor {
     optional string physical_mode_id = 1000;
+    optional string label = 1001;
 }
