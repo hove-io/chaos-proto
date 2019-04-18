@@ -6,6 +6,7 @@ import "gtfs-realtime.proto";
 extend transit_realtime.TripUpdate {
     optional string trip_message = 1000;
     optional transit_realtime.Alert.Effect effect = 1001;
+    optional string headsign = 1002;
 }
 
 extend transit_realtime.TripDescriptor {
@@ -33,5 +34,4 @@ extend transit_realtime.TripUpdate.StopTimeEvent {
 
 extend transit_realtime.VehicleDescriptor {
     optional string physical_mode_id = 1000;
-    optional string label = 1001;
 }
