@@ -89,9 +89,7 @@ message LineSection{
     required PtObject line = 1;
     required PtObject start_point = 2;
     required PtObject end_point = 3;
-    optional int32 sens = 4;
     repeated PtObject routes = 5;
-    repeated PtObject via = 6;
 }
 
 message PtObject{
