@@ -82,8 +82,34 @@ message Impact{
 
     //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
     optional uint64 notification_date = 9;
+
+    // Application pattern used while creating impact if any
+    repeated Pattern application_patterns = 10;
 }
 
+message WeekPattern {
+    required bool monday = 1;
+    required bool tuesday = 2;
+    required bool wednesday = 3;
+    required bool thursday = 4;
+    required bool friday = 5;
+    required bool saturday = 6;
+    required bool sunday = 7;
+}
+
+message TimeSlot{
+	// Times in local for a timeslot
+	required uint32 begin = 1;
+	required uint32 end = 2;
+}
+
+message Pattern {
+	// Dates in local
+	required uint32 start_date = 1;
+	required uint32 end_date = 2;
+	required WeekPattern week_pattern = 3;
+	repeated TimeSlot time_slots = 4;
+}
 
 message LineSection{
     required PtObject line = 1;
