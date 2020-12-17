@@ -88,13 +88,13 @@ message Impact{
 }
 
 message WeekPattern {
-    optional bool monday = 1;
-    optional bool tuesday = 2;
-    optional bool wednesday = 3;
-    optional bool thursday = 4;
-    optional bool friday = 5;
-    optional bool saturday = 6;
-    optional bool sunday = 7;
+    required bool monday = 1;
+    required bool tuesday = 2;
+    required bool wednesday = 3;
+    required bool thursday = 4;
+    required bool friday = 5;
+    required bool saturday = 6;
+    required bool sunday = 7;
 }
 
 message TimeSlot{
