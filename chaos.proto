@@ -109,6 +109,7 @@ message Pattern {
 	required uint32 end_date = 2;
 	required WeekPattern week_pattern = 3;
 	repeated TimeSlot time_slots = 4;
+	optional string time_zone = 5;
 }
 
 message LineSection{
