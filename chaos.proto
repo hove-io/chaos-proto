@@ -119,6 +119,23 @@ message LineSection{
     repeated PtObject routes = 5;
 }
 
+message OrderedPtObject{
+ required PtObject pt_object = 1;
+ required uint32 order = 2;
+}
+
+message RoutePattern{
+ repeated OrderedPtObject ordered_pt_objects = 1;
+}
+
+message RailSection {
+ required PtObject line = 1;
+ required PtObject start_point = 2;
+ required PtObject end_point = 3;
+ repeated OrderedPtObject blocked_stop_areas = 4;
+ repeated RoutePattern route_patterns = 5;
+}
+
 message PtObject{
       enum Type {
         network = 1;
@@ -129,6 +146,7 @@ message PtObject{
         unkown_type = 6;
         stop_point = 7;
         trip = 8;
+        rail_section = 9;
       }
     //In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).
     optional uint64 created_at = 1;
@@ -137,6 +155,8 @@ message PtObject{
     required Type pt_object_type = 3;
     required string uri = 4;
     optional LineSection pt_line_section = 5;
+    optional RailSection pt_rail_section = 6;
+
 }
 
 message Severity{
