@@ -129,7 +129,7 @@ message RoutePattern{
 }
 
 message RailSection {
- required PtObject line = 1;
+ optional PtObject line = 1;
  required PtObject start_point = 2;
  required PtObject end_point = 3;
  repeated OrderedPtObject blocked_stop_areas = 4;
