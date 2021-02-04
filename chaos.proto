@@ -120,7 +120,7 @@ message LineSection{
 }
 
 message OrderedPtObject{
- required PtObject pt_object = 1;
+ required string uri = 1;
  required uint32 order = 2;
 }
 
