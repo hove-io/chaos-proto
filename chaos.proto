@@ -128,8 +128,8 @@ message RailSection {
  required PtObject start_point = 1;
  required PtObject end_point = 2;
  repeated OrderedPtObject blocked_stop_areas = 3;
- optional PtObject line = 4;
- repeated PtObject routes = 5;
+ repeated PtObject routes = 4;
+ optional PtObject line = 5;
 }
 
 message PtObject{
