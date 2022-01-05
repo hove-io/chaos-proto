@@ -77,10 +77,9 @@ message Impact{
 
     repeated Message messages = 7;
 
-    // Send certain type of message(s) to optional brokers (see Channel types)
+    // send certain type of message(s) to optional brokers ! deprecated in favor of Message values
     optional bool send_notifications = 8;
-
-    // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
+    // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC) ! deprecated in favor of Message values
     optional uint64 notification_date = 9;
 
     // Application pattern used while creating impact if any
@@ -189,11 +188,12 @@ message Message{
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 updated_at = 4;
 
-    // Meta
     repeated Meta meta = 5;
 
+    // send this message
+    optional bool send_notifications = 6;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
-    optional uint64 notification_date = 6;
+    optional uint64 notification_date = 7;
 }
 
 // It represents a channel of diffusion like SMS, Push notifications, twitter, etc...
