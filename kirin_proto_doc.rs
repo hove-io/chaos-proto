@@ -35,7 +35,7 @@
 pub struct TripUpdate {
     trip: TripDescriptor,
 
-    // present only for a new vehicle
+    // present only for an added trip
     vehicle: Option<VehicleDescriptor>,
 
     // Always contains all stops this vehicle go through
@@ -79,7 +79,7 @@ pub struct TripDescriptor {
 
     // never present
     start_time: Option<String>,
-    // always present, used to identify the day for the vehicle_journey 
+    // always present, used to identify the UTC day for the start of vehicle_journey 
     // concerned by this disruption
     start_date: Option<String>,
 
