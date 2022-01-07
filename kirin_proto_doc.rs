@@ -28,21 +28,19 @@
 // https://groups.google.com/d/forum/navitia
 // www.navitia.io
 
-// self.effect is the field to trust for deciding whether :
-//  - this is a NEW vehicle (not in ntfs)
-//  - this is a modification of an EXISTING vehicle (in ntfs, or a previously received new vehicle)
-//  - this is a vehicle to be deleted.
+
 pub struct TripUpdate {
     trip: TripDescriptor,
 
     // present only for an added trip
     vehicle: Option<VehicleDescriptor>,
 
-    // Always contains all stops this vehicle go through
-    // If the vehicle is to be deleted, it contains the stops of the deleted vehicle
+    // This should always contains all stops this vehicle go through.
+    // If the vehicle is to be deleted, it should contains the stops of the deleted vehicle.
+    // However, the list may be empty for deleted vehicles, and the consumer should handle this case.
     stop_time_updates: Vec<StopTimeUpdate>,
 
-    // never present ?
+    // never present 
     timestamp: Option<u64>,
 
     /// kirin extensions
@@ -51,8 +49,17 @@ pub struct TripUpdate {
     trip_message: Option<String>, 
     // sometimes present. To be used for display in responses.
     headsign: Option<String>,   
-    // always present, used to determine if this a new vehicle
-    // or a modification of an existing vehicle, or a vehicle to be deleted
+
+    // always present, used to determine  whether :
+    //  - this is a NEW vehicle (not in ntfs)
+    //  - this is a modification of an EXISTING vehicle (in ntfs, or a previously received new vehicle)
+    //  - this is a vehicle to be deleted.
+    // 
+    // Please be advised that this effect is *relative to the base-schedule*,
+    // and not relative to last information exchanged.
+    // So for a trip that is added then delayed, will  have an two updates with the "AdditionnalService" effect.
+    //
+    // The same goes for deletion (in case details are added later to the deleted trip, like supplementary deleted-stops)
     effect: Option<AlertEffect>,  
 }
 
@@ -123,7 +130,8 @@ pub struct StopTimeUpdate {
     // it can be a stop_id not present in NTFS 
     stop_id: Option<String>,
 
-    // at least one of arrival/departure is present
+    // For a deleted trip, both arrival and departure can be None.
+    // Otherwise, at least one of arrival/departure is present
     arrival: Option<StopTimeEvent>,
     departure: Option<StopTimeEvent>,
 
