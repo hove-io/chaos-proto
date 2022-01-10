@@ -130,7 +130,7 @@ pub struct StopTimeUpdate {
     // it can be a stop_id not present in NTFS 
     stop_id: Option<String>,
 
-    // For a deleted trip, both arrival and departure can be None.
+    // For a deleted stop, both arrival and departure can be None.
     // Otherwise, at least one of arrival/departure is present
     arrival: Option<StopTimeEvent>,
     departure: Option<StopTimeEvent>,
