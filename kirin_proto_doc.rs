@@ -65,14 +65,25 @@ pub struct TripUpdate {
 }
 
 pub enum AlertEffect {
-    NoService,
+    // Concerns only a base schedule vehicle
+    // Should be rejected if the vehicle id is not present in the base schedule
     ReducedService,
     SignificantDelay,
     Detour,
-    AdditionnalService,
     ModifiedService,
     OtherEffect,
     UnknownEffect,
+
+    // Concerns a vehicle which was NOT present in the base schedule
+    // The first time such an effect is received, it means that a NEW vehicle must be added.
+    // The subsequent times, it means that the new vehicle must be modified
+    // Should be rejected if the vehicle id is present in the base schedule.
+    AdditionnalService,
+
+    // Delete the vehicle,
+    // Can be base schedule OR a new vehicle added with AdditionnalService 
+    NoService,
+
     // never happens for now
     StopMoved,
 }
