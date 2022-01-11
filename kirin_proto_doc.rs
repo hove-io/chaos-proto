@@ -52,12 +52,13 @@ pub struct TripUpdate {
 
     // always present, used to determine  whether :
     //  - this is a NEW vehicle (not in ntfs)
-    //  - this is a modification of an EXISTING vehicle (in ntfs, or a previously received new vehicle)
-    //  - this is a vehicle to be deleted.
+    //  - this is a modification of an EXISTING vehicle (in ntfs)
+    //  - this is a vehicle to be deleted (in ntfs, or a previously received new vehicle)
     // 
     // Please be advised that this effect is *relative to the base-schedule*,
     // and not relative to last information exchanged.
     // So for a trip that is added then delayed, will  have an two updates with the "AdditionnalService" effect.
+    // Only deletion of an added trip will have an other effect than "AdditionnalService".
     //
     // The same goes for deletion (in case details are added later to the deleted trip, like supplementary deleted-stops)
     effect: Option<AlertEffect>,  
