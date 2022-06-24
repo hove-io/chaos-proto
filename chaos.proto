@@ -26,7 +26,7 @@ message Disruption{
     repeated Tag tags = 11;
 
     optional string note = 12;
-    // the place where the disruption happen, the impacts can be in anothers places
+    // general info about area where the disruption happens
     repeated PtObject localization = 13;
 
     // Provider of the disruption
@@ -133,12 +133,14 @@ message RailSection {
 
 message PtObject{
       enum Type {
+        option allow_alias = true;
         network = 1;
         stop_area = 2;
         line = 3;
         line_section = 4;
         route = 5;
         unkown_type = 6;
+        unknown_type = 6;
         stop_point = 7;
         trip = 8;
         rail_section = 9;
@@ -200,6 +202,7 @@ message Message{
 message Channel{
       // Represent a type of diffusion for a channel like web, mobile, notification, sms, email..
       enum Type {
+        option allow_alias = true;
         web = 1;
         sms = 2;
         email = 3;
@@ -208,6 +211,7 @@ message Channel{
         twitter = 6;
         facebook = 7;
         unkown_type = 8;
+        unknown_type = 8;
         title = 9;
         beacon = 10;
       }
