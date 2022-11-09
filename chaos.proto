@@ -196,6 +196,8 @@ message Message{
     optional bool send_notification = 6;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 notification_date = 7;
+
+    repeated transit_realtime.TranslatedString.Translation translation = 8;
 }
 
 // It represents a channel of diffusion like SMS, Push notifications, twitter, etc...
@@ -232,6 +234,8 @@ message Channel{
     optional uint64 updated_at = 6;
     //Channel types
     repeated Type types = 7;
+    
+    repeated transit_realtime.TranslatedString.Translation translation = 8;
 }
 
 // Property attached to a disruption
