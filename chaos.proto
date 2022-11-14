@@ -234,8 +234,6 @@ message Channel{
     optional uint64 updated_at = 6;
     //Channel types
     repeated Type types = 7;
-    
-    repeated transit_realtime.TranslatedString.Translation translation = 8;
 }
 
 // Property attached to a disruption
