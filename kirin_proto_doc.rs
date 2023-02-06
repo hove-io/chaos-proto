@@ -28,6 +28,19 @@
 // https://groups.google.com/d/forum/navitia
 // www.navitia.io
 
+pub struct FeedMessage {
+    entity: Vec<FeedEntity>,
+}
+
+pub struct FeedEntity {
+    // Id of the disruption to be added/replaced
+    // For a same entity id, the last one emitted is always the most up-to-date
+    // (to sort and/or shortcut multiple FeedMessages to process).
+    id: String,
+
+    // Disruption on a dated-VehicleJourney
+    trip_update: Option<TripUpdate>,
+}
 
 pub struct TripUpdate {
     trip: TripDescriptor,
