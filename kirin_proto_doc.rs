@@ -36,6 +36,7 @@ pub struct FeedEntity {
     // Id of the disruption to be added/replaced
     // For a same entity id, the last one emitted is always the most up-to-date
     // (to sort and/or shortcut multiple FeedMessages to process).
+    // It's also stand-alone (contains all the information of the disruption).
     id: String,
 
     // Disruption on a dated-VehicleJourney
