@@ -180,7 +180,19 @@ message Tag{
     optional uint64 updated_at = 4;
 }
 
-message Message{
+// Need to "extend" TranslatedString with gtfs-realtime, but not possible.
+message Translation {
+    // A UTF-8 string containing the message.
+    required string text = 1;
+    // BCP-47 language code. Can be omitted if the language is unknown or if
+    // no i18n is done at all for the feed. At most one translation is
+    // allowed to have an unspecified language tag.
+    optional string language = 2;
+    // A UTF-8 string containing url to the media (voice) of text
+    optional string url_audio = 3;
+}
+
+  message Message{
     required string text = 1;
     // Channel where the message is active, it can be something like twitter, SMS, web, etc...
     required Channel channel = 2;
@@ -197,7 +209,7 @@ message Message{
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 notification_date = 7;
 
-    repeated transit_realtime.TranslatedString.Translation translation = 8;
+    repeated Translation translation = 8;
 }
 
 // It represents a channel of diffusion like SMS, Push notifications, twitter, etc...
