@@ -7,11 +7,17 @@ extend transit_realtime.TripUpdate {
     optional string trip_message = 1000;
     optional transit_realtime.Alert.Effect effect = 1001;
     optional string headsign = 1002;
+    optional string trip_short_name = 1003;
 }
 
 extend transit_realtime.TripDescriptor {
     optional string contributor = 1000;
     optional string company_id = 1001;
+    optional string dataset_id = 1002;
+    optional string network_id = 1003;
+    optional string commercial_mode_id = 1004;
+    optional string line_id = 1005;
+    optional string route_id = 1006;
 }
 
 extend transit_realtime.TripUpdate.StopTimeUpdate {
