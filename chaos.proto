@@ -144,6 +144,7 @@ message PtObject{
         stop_point = 7;
         trip = 8;
         rail_section = 9;
+        poi = 10;
       }
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 created_at = 1;
