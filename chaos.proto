@@ -5,33 +5,24 @@ import "gtfs-realtime.proto";
 message Disruption{
     // must match with the id in the FeedEntity for deletion
     required string id = 1;
-
     // it's a reference label as shown in the backoffice
     optional string reference = 3;
-
     // the publication period specify when an information can be displayed to
     // the customer, if a request is made before or after this period the
     // disruption must not be shown
     optional transit_realtime.TimeRange publication_period = 4;
-
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 created_at = 6;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 updated_at = 7;
-
     optional Cause cause = 8;
-
     repeated Impact impacts = 9;
-
     repeated Tag tags = 11;
-
     optional string note = 12;
     // general info about area where the disruption happens
     repeated PtObject localization = 13;
-
     // Provider of the disruption
     optional string contributor = 14;
-
     // properties attached to the disruption
     repeated DisruptionProperty properties = 15;
 }
@@ -67,21 +58,15 @@ message Impact{
     optional uint64 created_at = 2;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 updated_at = 3;
-
     // the application period defines when the impact happens
     repeated transit_realtime.TimeRange application_periods = 4;
-
     optional Severity severity = 5;
-
     repeated PtObject informed_entities = 6;
-
     repeated Message messages = 7;
-
     // send certain type of message(s) to optional brokers ! deprecated in favor of Message values
     optional bool send_notifications = 8;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC) ! deprecated in favor of Message values
     optional uint64 notification_date = 9;
-
     // Application pattern used while creating impact if any
     repeated Pattern application_patterns = 10;
 }
@@ -119,20 +104,24 @@ message LineSection{
 }
 
 message OrderedPtObject{
- required string uri = 1;
- required uint32 order = 2;
+    required string uri = 1;
+    required uint32 order = 2;
 }
 
 message RailSection {
- required PtObject start_point = 1;
- required PtObject end_point = 2;
- repeated OrderedPtObject blocked_stop_areas = 3;
- repeated PtObject routes = 4;
+    required PtObject start_point = 1;
+    required PtObject end_point = 2;
+    repeated OrderedPtObject blocked_stop_areas = 3;
+    repeated PtObject routes = 4;
  optional PtObject line = 5;
 }
 
+message AccessPoint {
+    optional PtObject stop_point = 1;
+}
+
 message PtObject{
-      enum Type {
+    enum Type {
         option allow_alias = true;
         network = 1;
         stop_area = 2;
@@ -145,7 +134,8 @@ message PtObject{
         trip = 8;
         rail_section = 9;
         poi = 10;
-      }
+        access_point = 11;
+    }
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 created_at = 1;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
@@ -154,7 +144,7 @@ message PtObject{
     required string uri = 4;
     optional LineSection pt_line_section = 5;
     optional RailSection pt_rail_section = 6;
-
+    optional AccessPoint pt_access_point = 7;
 }
 
 message Severity{
@@ -164,11 +154,8 @@ message Severity{
     optional uint64 created_at = 3;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 updated_at = 4;
-
     optional string color = 5;
-
     optional int32 priority = 6;
-
     optional transit_realtime.Alert.Effect effect = 7;
 }
 
@@ -197,29 +184,24 @@ message Translation {
     required string text = 1;
     // Channel where the message is active, it can be something like twitter, SMS, web, etc...
     required Channel channel = 2;
-
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 created_at = 3;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 updated_at = 4;
-
     repeated Meta meta = 5;
-
     // send this message
     optional bool send_notification = 6;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 notification_date = 7;
-
     repeated Translation translation = 8;
-
     // A UTF-8 string containing the vocalized text audio file
     optional string url_audio = 9;
 }
 
 // It represents a channel of diffusion like SMS, Push notifications, twitter, etc...
 message Channel{
-      // Represent a type of diffusion for a channel like web, mobile, notification, sms, email..
-      enum Type {
+    // Represent a type of diffusion for a channel like web, mobile, notification, sms, email..
+    enum Type {
         option allow_alias = true;
         web = 1;
         sms = 2;
@@ -232,18 +214,16 @@ message Channel{
         unknown_type = 8;
         title = 9;
         beacon = 10;
-      }
+    }
     required string id = 1;
     //for example: "twitter" or "short text"
     optional string name = 2;
     //for example: "text/plain" or "text/html"
     optional string content_type = 3;
-
     // maximum number of character for this channel, mostly for information
     // since diffusion system don't need to bother with that
     // If missing, there is no limit!
     optional uint32 max_size = 4;
-
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 created_at = 5;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
@@ -271,5 +251,5 @@ message Meta {
 }
 
 extend transit_realtime.FeedEntity{
-  optional Disruption disruption = 1000;
+    optional Disruption disruption = 1000;
 }
