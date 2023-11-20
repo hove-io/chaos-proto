@@ -135,6 +135,7 @@ message PtObject{
         rail_section = 9;
         poi = 10;
         access_point = 11;
+        vehicle_journey = 12;
     }
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 created_at = 1;
