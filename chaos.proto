@@ -194,7 +194,7 @@ message Translation {
     optional bool send_notification = 6;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
     optional uint64 notification_date = 7;
-    repeated Translation translation = 8;
+    repeated Translation translations = 8;
     // A UTF-8 string containing the vocalized text audio file
     optional string url_audio = 9;
 }
