@@ -146,6 +146,7 @@ message PtObject{
     optional LineSection pt_line_section = 5;
     optional RailSection pt_rail_section = 6;
     optional AccessPoint pt_access_point = 7;
+    required string name = 8;
 }
 
 message Severity{
