@@ -216,6 +216,7 @@ message Channel{
         unknown_type = 8;
         title = 9;
         beacon = 10;
+        pids = 11;
     }
     required string id = 1;
     //for example: "twitter" or "short text"
