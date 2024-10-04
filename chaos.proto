@@ -25,6 +25,8 @@ message Disruption{
     optional string contributor = 14;
     // properties attached to the disruption
     repeated DisruptionProperty properties = 15;
+    // author of the disruption
+    optional string author = 16;
 }
 
 message Wording {
