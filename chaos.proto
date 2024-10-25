@@ -5,6 +5,8 @@ import "gtfs-realtime.proto";
 message Disruption{
     // must match with the id in the FeedEntity for deletion
     required string id = 1;
+    // indicator if disruption is planned or not
+    optional string type = 2;
     // it's a reference label as shown in the backoffice
     optional string reference = 3;
     // the publication period specify when an information can be displayed to
