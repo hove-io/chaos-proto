@@ -75,7 +75,7 @@ message Impact{
     optional uint64 notification_date = 9;
     // Application pattern used while creating impact if any
     repeated Pattern application_patterns = 10;
-    // version of the disruption
+    // version of the impact
     optional string version = 11;
 }
 
