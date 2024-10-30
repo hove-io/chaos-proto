@@ -29,6 +29,8 @@ message Disruption{
     repeated DisruptionProperty properties = 15;
     // author of the disruption
     optional string author = 16;
+    // version of the disruption
+    optional string version = 17;
 }
 
 message Wording {
@@ -73,6 +75,8 @@ message Impact{
     optional uint64 notification_date = 9;
     // Application pattern used while creating impact if any
     repeated Pattern application_patterns = 10;
+    // version of the impact
+    optional string version = 11;
 }
 
 message WeekPattern {
