@@ -31,6 +31,9 @@ enum StopTimeEventStatus {
   ADDED = 3;
   DELETED_FOR_DETOUR = 4;
   ADDED_FOR_DETOUR = 5;
+  SKIPPED = 6;
+  NO_ALIGHTING = 7;
+  NO_BOARDING = 8;
 }
 
 extend transit_realtime.TripUpdate.StopTimeEvent {
