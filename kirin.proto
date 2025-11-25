@@ -8,6 +8,7 @@ extend transit_realtime.TripUpdate {
     optional transit_realtime.Alert.Effect effect = 1001;
     optional string headsign = 1002;
     optional string trip_short_name = 1003;
+    optional string severity_name = 1004;
 }
 
 extend transit_realtime.TripDescriptor {
