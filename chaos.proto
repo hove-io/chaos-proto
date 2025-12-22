@@ -58,6 +58,15 @@ message Cause{
     optional Category category = 6;
 }
 
+message File {
+    enum Type {
+        pdf = 1;
+        image = 2;
+    }
+    required Type type = 1
+    required string url = 2
+}
+
 message Impact{
     required string id = 1;
     // in POSIX time (number of seconds since January 1st 1970 00:00:00 UTC)
@@ -77,6 +86,7 @@ message Impact{
     repeated Pattern application_patterns = 10;
     // version of the impact
     optional string version = 11;
+    repeated File files = 12;
 }
 
 message WeekPattern {
