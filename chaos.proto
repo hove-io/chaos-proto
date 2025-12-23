@@ -60,11 +60,12 @@ message Cause{
 
 message File {
     enum Type {
-        pdf = 1;
-        image = 2;
+        unknown = 1;
+        pdf = 2;
+        image = 3;
     }
-    required Type type = 1
-    required string url = 2
+    required Type type = 1;
+    required string url = 2;
 }
 
 message Impact{
