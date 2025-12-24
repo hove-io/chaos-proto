@@ -61,7 +61,7 @@ message Cause{
 message File {
     enum Type {
         unknown = 1;
-        pdf = 2;
+        document = 2;
         image = 3;
     }
     required Type type = 1;
