@@ -9,6 +9,7 @@ extend transit_realtime.TripUpdate {
     optional string headsign = 1002;
     optional string trip_short_name = 1003;
     optional string severity_name = 1004;
+    optional uint64 updated_at = 1005;
 }
 
 extend transit_realtime.TripDescriptor {
