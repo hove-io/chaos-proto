@@ -201,7 +201,7 @@ message Translation {
     optional string url_audio = 3;
 }
 
-  message Message{
+message Message {
     required string text = 1;
     // Channel where the message is active, it can be something like twitter, SMS, web, etc...
     required Channel channel = 2;
@@ -217,6 +217,8 @@ message Translation {
     repeated Translation translations = 8;
     // A UTF-8 string containing the vocalized text audio file
     optional string url_audio = 9;
+    // The period during which the message should be displayed.
+    repeated transit_realtime.TimeRange display_periods = 10;
 }
 
 // It represents a channel of diffusion like SMS, Push notifications, twitter, etc...
